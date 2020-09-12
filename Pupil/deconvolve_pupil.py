@@ -17,7 +17,7 @@ print(f"\nSystem version\n{sys.version}")
 PATH = {}
 PATH["data_dir"] = "DataBlinksInterpolated_csv"
 PATH["out_dir"] = "DataPreprocessed"
-PATH["outpdf_dir"] = "DataPreprocessed_pdf"
+# PATH["outpdf_dir"] = "DataPreprocessed_pdf"
 
 #%% function for deconvolution
 
@@ -72,7 +72,7 @@ def deconvolve_pupil(subject, subset=None):
     d.write_file(fname)
 
     # save pdf
-    d.plot_segments(pdffile=os.path.join(PATH["outpdf_dir"], f"{subject}.pdf"))
+    # d.plot_segments(pdffile=os.path.join(PATH["outpdf_dir"], f"{subject}.pdf"))
 
     return d
 
