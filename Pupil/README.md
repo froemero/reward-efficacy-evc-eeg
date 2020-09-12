@@ -2,7 +2,7 @@
 
 ## Preprocessing
 
-The blink-interpolated pupil data (csv files) are in the `DataBlinksInterpolated_csv` directory. 
+The blink-interpolated pupil data (csv files) are in the `DataBlinksInterpolated_csv` directory (download all data [here](https://osf.io/3buew/)). 
 
 To fit the deconvolution model with the [pypillometry package](https://github.com/ihrke/pypillometry), use `deconvolve_pupil.py` (implemented with Python 3.8.5), which uses parallel processing to fit the model to each participant, and each participant's results/data will be saved in the `DataPreprocessed` directory (an example `6.pd` is provided). 
 
@@ -12,4 +12,4 @@ Prepare the data (csv files in `Data_trial_PRF_coef_baseline`) for statistical m
 
 ## Analysis
 
-Run `pupil_coef_stats_figs.R` to replicate the results in the paper.
+Run `pupil_coef_stats_figs.R` to replicate the results in the paper. This R script relies on `Data_analysis/pupil_coefs.csv`.

@@ -4,7 +4,7 @@
 - Github repository: https://github.com/hauselin/reward-efficacy-evc-eeg
 - Open Science Framework repository: https://osf.io/xuwn9/
 
-This repository contains stuff for the following paper: 
+This repository contains code for the following paper: 
 
 Frömer, R., Lin, H., Wolf, C. K. D., Inzlicht, M., & Shenhav, A. (2020). When effort matters: Expectations of reward and efficacy guide cognitive control allocation. bioRxiv. https://doi.org/10.1101/2020.05.14.095935
 
@@ -16,4 +16,4 @@ If you have questions related to anything in this repository, raise an issue [he
 
 ## Directories
 
-- Pupil: Data and code for pupil analyses
+- Pupil: Code for pupil analyses
