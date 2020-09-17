@@ -1,12 +1,12 @@
 
 # README
 
-- Github repository: https://github.com/hauselin/reward-efficacy-evc-eeg
+- Github repository: https://github.com/froemero/reward-efficacy-evc-eeg
 - Open Science Framework repository: https://osf.io/xuwn9/
 
-Romy Frömer wrote the code and analyzed the behavioral and EEG data in the `Behavior-and-EEG directory`. Questions? Get in touch with Romy.
+**Romy Frömer wrote the code and analyzed the behavioral and EEG data in the `Behavior-and-EEG directory`. Questions? Get in touch with Romy.**
 
-Hause Lin wrote the code and analyzed the pupil data in the `Pupil` directory. Questions? Get in touch with Hause.
+**Hause Lin wrote the code and analyzed the pupil data in the `Pupil` directory. Questions? Get in touch with Hause.**
 
 **Directories**
 

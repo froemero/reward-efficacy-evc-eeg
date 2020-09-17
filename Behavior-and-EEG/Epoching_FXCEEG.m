@@ -14,8 +14,9 @@
 % 5) Cue-locked but whole Interval 
 %% Info for segmentation analyses:
 
-PATH = '~/Dropbox (Brown)/Data and Results Shared/';
-addpath('~/Dropbox (Brown)/ShenhavLab/Resources/EEG_resources/EEGfunctions/')
+%% SPECIFY YOUR WORKING DIRECTORY! %%
+PATH = './'; 
+addpath('EEGfunctions/'); 
 
 %% about the data:
 %srate = ugly 512;
@@ -45,7 +46,7 @@ alltrigs= {[91:94]; [51:53];[200, 210]; [10, 20, 110]};%
 allIL= [-0.2, 1.5; -0.2, 0.8; -0.2, 0.8; -0.2, 0.8];%
 
 %% for response-locked segementation:
-load(sprintf('%sBehavior/Behavioral data/FXCallSubDataTable.mat', PATH))
+load(sprintf('%sBehavior/FXCallSubDataTable.mat', PATH))
 
 %% approach: Get all condition triggers
 % just NAN the artifact trials and paste all subject files together.
@@ -55,7 +56,7 @@ load(sprintf('%sBehavior/Behavioral data/FXCallSubDataTable.mat', PATH))
 %% preparation
 [ALLEEG EEG CURRENTSET ALLCOM] = eeglab;
 %%
-SOURCEFILES = dir(strcat(PATH, 'EEG/EEGDATA Continuous/*.set')); %all cleaned files
+SOURCEFILES = dir(strcat(PATH, 'EEG-continuous/*.set')); %all cleaned files
 SUBJECTS = 1:numel(SOURCEFILES);
 %%
 allsegs= { 'c';'s';'r'; 'f'}; % change back! 
@@ -100,7 +101,7 @@ for nsegs = 1:length(allsegs)
            
             
             % load dataset
-            EEG = pop_loadset('filename',sprintf('%s_ICAPruned_Reref.set',vpn),'filepath',sprintf('%sEEG/EEGDATA Continuous/',PATH));
+            EEG = pop_loadset('filename',sprintf('%s_ICAPruned_Reref.set',vpn),'filepath',sprintf('%sEEG-continuous',PATH));
             
              % load fixed trigger file for r-locked trials
             if strcmp(allsegs{nsegs}, 'r')

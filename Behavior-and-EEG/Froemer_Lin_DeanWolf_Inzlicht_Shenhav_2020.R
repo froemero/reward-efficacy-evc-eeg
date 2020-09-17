@@ -8,7 +8,8 @@ library(effects) # predicted effects
 library(sjPlot) # tables
 library(Rmisc) # data summaries and multiplot
 
-setwd("~/Dropbox (Brown)/Data and Results Shared/")
+# SPECIFY YOUR WORKING DIRECTORY! # 
+setwd("./")
 
 didLmerConverge = function(lmerModel){
   relativeMaxGradient=signif(max(abs(with(lmerModel@optinfo$derivs,solve(Hessian,gradient)))),3)
@@ -24,13 +25,13 @@ cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2",
 
 #########################  load and clean all data #################################
 
-input_file = '~/Dropbox (Brown)/Data and Results Shared/Behavior/Behavioral data/FXC_102Data_010920.csv'
+input_file = 'Behavior/FXC_102Data_010920.csv'
 a1a = read.csv(input_file) # study 1 behavior only
 
 a1a <- a1a[a1a$SubID > 1030,] # subjects with smaller IDs did an earlier Version of the paradigm without fixed reward rate
 
 # behavior Study 2
-input_file = '~/Dropbox (Brown)/Data and Results Shared/Behavior/Behavioral data/FXCallSubDataTable.csv'
+input_file = 'Behavior/FXCallSubDataTable.csv'
 a1 = read.csv(input_file)
 
 ## check participants performance an whether anyone needs to be excluded (cutoff 60% accuracy under high efficacy)
@@ -94,7 +95,7 @@ for (i in levels(a1a$SubID) )
 
 ### EEG
 
-input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/P3b250550.mat' # where is your file?
+input_file = 'Export/P3b250550.mat' # where is your file?
 P3b = readMat(input_file)
 
 P3b = P3b$P3b250550 #--> specify variable as saved in Matlab
@@ -116,7 +117,7 @@ colnames(P3b)[c( 1, 2, 3, 4, 5,
 
 a1$P3b <- apply(cbind (P3b$Pz,P3b$P4,P3b$P3), 1, mean) # computes average activation in ROI
 
-input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/CNV10001500.mat' # where is your file?
+input_file = 'Export/CNV10001500.mat' # where is your file?
 CNV = readMat(input_file)
 
 CNV = CNV$CNV10001500 #--> specify variable as saved in Matlab
@@ -138,7 +139,7 @@ colnames(CNV)[c( 1, 2, 3, 4, 5,
 
 a1$CNV <- apply(cbind (CNV$Fz,CNV$FCz,CNV$Cz), 1, mean) # computes average activation in ROI
 # 
-# input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/PreStimBl13001500.mat' # where is your file?
+# input_file = '/Export/PreStimBl13001500.mat' # where is your file?
 # PreSBl = readMat(input_file)
 # 
 # PreSBl = PreSBl$PreStimBl13001500 #--> specify variable as saved in Matlab
@@ -161,7 +162,7 @@ a1$CNV <- apply(cbind (CNV$Fz,CNV$FCz,CNV$Cz), 1, mean) # computes average activ
 # a1$PreSBl <- apply(cbind (PreSBl$FC3, PreSBl$FCz, PreSBl$FC4, PreSBl$C3, PreSBl$C4, PreSBl$Cz), 1, mean) # computes average a
 
 
-input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/Baseline2000.mat' # where is your file?
+input_file = 'Export/Baseline2000.mat' # where is your file?
 Baseline = readMat(input_file)
 
 Baseline = Baseline$Baseline2000 #--> specify variable as saved in Matlab
@@ -185,7 +186,7 @@ a1$Baseline <- apply(cbind (Baseline$CP4, Baseline$CPz, Baseline$CP3, Baseline$P
 a1$fBaseline <- apply(cbind (Baseline$Fz, Baseline$FCz, Baseline$Cz), 1, mean) # computes average activation in ROI
 
 
-input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/rBaseline2000.mat' # where is your file?
+input_file = 'Export/rBaseline2000.mat' # where is your file?
 rBaseline = readMat(input_file)
 
 rBaseline = rBaseline$rBaseline2000 #--> specify variable as saved in Matlab
@@ -207,11 +208,11 @@ colnames(rBaseline)[c( 1, 2, 3, 4, 5,
 
 a2$rBaseline <- apply(cbind (rBaseline$FC4, rBaseline$FCz, rBaseline$FC3), 1, mean) # computes average activation in ROI
 
-input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/P2PFCZ.mat' # where is your file?
+input_file = 'Export/P2PFCZ.mat' # where is your file?
 P2PFRN = readMat(input_file)
 a1$P2PFRN <- P2PFRN$P2PFCZ
 
-input_file = '/Users/Romy/Dropbox (Brown)/Data and Results Shared/Export/ERN0100.mat' # where is your file?
+input_file = 'Export/ERN0100.mat' # where is your file?
 ERN = readMat(input_file)
 
 ERN = ERN$ERN0100 #--> specify variable as saved in Matlab
@@ -329,7 +330,7 @@ pDRmCNVl3 <- ggplot(data=sum1, aes(x=EffLvl, y=Acc, group =RewLvl, fill=RewLvl))
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accuracy") + coord_cartesian(ylim=c(0.8,0.9)) +#ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S1_Accuracynm_Efficacy_by_Reward.pdf", width =4, height = 4)
+pdf("Figures/S1_Accuracynm_Efficacy_by_Reward.pdf", width =4, height = 4)
 pDRmCNVl3
 dev.off()
 
@@ -340,7 +341,7 @@ pDRmCNVl3 <- ggplot(data=sum1, aes(x=Congruency, y=Acc))+ geom_bar(stat="identit
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accuracy") + coord_cartesian(ylim=c(0.7,1)) +#ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S1_Accuracynm_Congruency.pdf", width =4, height = 4)
+pdf("Figures/S1_Accuracynm_Congruency.pdf", width =4, height = 4)
 pDRmCNVl3
 dev.off()
 
@@ -375,7 +376,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=EffLvl, y=zAccRT, group = RewLvl, fill=RewLv
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accurate RT (z-scored)") + coord_cartesian(ylim=c(-0.15,0.15))+ #ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S1_AccurateZRT_Efficacy_by_Reward_dot_version.pdf", width =2, height = 4)
+pdf("Figures/S1_AccurateZRT_Efficacy_by_Reward_dot_version.pdf", width =2, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -387,7 +388,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=Congruency, y=AccRT))+ geom_bar(stat="identi
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accurate RT (z-scored)") + coord_cartesian(ylim=c(550,700))+ #ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S1_AccurateRT_Congruency.pdf", width =4, height = 4)
+pdf("Figures/S1_AccurateRT_Congruency.pdf", width =4, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -440,7 +441,7 @@ pDRmCNVl3 <- ggplot(data=sum1, aes(x=EffLvl, y=Acc,group = RewLvl, fill=RewLvl))
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accuracy") + coord_cartesian(ylim=c(0.8,0.9)) +#ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S2_Accuracynm_Efficacy_by_Reward.pdf", width =4, height = 4)
+pdf("Figures/S2_Accuracynm_Efficacy_by_Reward.pdf", width =4, height = 4)
 pDRmCNVl3
 dev.off()
 
@@ -451,7 +452,7 @@ pDRmCNVl3 <- ggplot(data=sum1, aes(x=Congruency, y=Acc))+ geom_bar(stat="identit
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accuracy") + coord_cartesian(ylim=c(0.7,1)) +#ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S2_Accuracynm_Congruency.pdf", width =4, height = 4)
+pdf("Figures/S2_Accuracynm_Congruency.pdf", width =4, height = 4)
 pDRmCNVl3
 dev.off()
 
@@ -477,7 +478,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=EffLvl, y=zAccRT, group = RewLvl, fill=RewLv
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Accurate RT (z-scored)") + coord_cartesian(ylim=c(-0.15,0.15))+ #ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position=c(0.5, 0.8))
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S2_AccurateZRT_Efficacy_by_Reward_dot_version.pdf", width =2, height = 4)
+pdf("Figures/S2_AccurateZRT_Efficacy_by_Reward_dot_version.pdf", width =2, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -490,7 +491,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=Congruency, y=AccRT))+ geom_bar(stat="identi
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/S2_AccurateRT_Congruency.pdf", width =4, height = 4)
+pdf("Figures/S2_AccurateRT_Congruency.pdf", width =4, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -516,7 +517,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=EffLvl, y=zRT, group = RewLvl, fill=RewLvl))
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/Supplement_low_Priority/S2_ErrorRT_FXC_by_Reward.pdf", width =4, height = 4)
+pdf("Figures/S2_ErrorRT_FXC_by_Reward.pdf", width =4, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -561,7 +562,7 @@ pDRmP3 <- ggplot(data=sum1, aes(x=EffLvl, y=P3b,group = RewLvl,  fill=RewLvl))+g
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/P3_Efficacy_by_Reward.pdf", width =4, height = 4)
+pdf("Figures/P3_Efficacy_by_Reward.pdf", width =4, height = 4)
 pDRmP3
 dev.off()
 
@@ -577,7 +578,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=EffLvl, y=CNV,group = RewLvl, fill=RewLvl))+
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Amplitude [µV]") + #ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/lCNV_Efficacy_by_Reward.pdf", width =4, height = 4)
+pdf("Figures/lCNV_Efficacy_by_Reward.pdf", width =4, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -643,7 +644,7 @@ pAccRTCNV <- ggplot(data=IA, aes(x=wsCNV, y=fit )) +theme_bw(12) + geom_line()+
   geom_ribbon(data=IA, aes(x=wsCNV, max = fit + se, min = fit- se),alpha=0.1, inherit.aes = FALSE)+scale_y_continuous(limits=c(0.7,1), expand=c(0, 0))+ scale_x_continuous(limits = c(min(a1$wsCNV, na.rm=TRUE ), max(a1$wsP3b, na.rm=TRUE)),expand=c(0, 0))+
   xlab("CNV") + ylab("Accuracy") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="bottom")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/lCNV_acc.pdf", width =2, height = 4)
+pdf("Figures/lCNV_acc.pdf", width =2, height = 4)
 pAccRTCNV
 dev.off()
 
@@ -657,7 +658,7 @@ pAccRTP3b <- ggplot(data=IA, aes(x=wsP3b, y=fit ))  +theme_bw(12) + geom_line()+
   geom_ribbon(data=IA, aes(x=wsP3b, max = fit + se, min = fit- se),alpha=0.1, inherit.aes = FALSE)+ scale_y_continuous(limits=c(0.7,1), expand=c(0, 0))+ scale_x_continuous(limits = c(min(a1$wsCNV, na.rm=TRUE ), max(a1$wsP3b, na.rm=TRUE)), expand=c(0, 0))+
   xlab("P3b") + ylab("Accuracy") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="bottom")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/P3b_acc.pdf", width =2, height = 4)
+pdf("Figures/P3b_acc.pdf", width =2, height = 4)
 pAccRTP3b
 dev.off()
 
@@ -750,7 +751,7 @@ pAccRTCNV <- ggplot(data=IA, aes(x=wsCNV, y=fit )) +theme_bw(12) + geom_line()+
   geom_ribbon(data=IA, aes(x=wsCNV, max = fit + se, min = fit- se),alpha=0.1, inherit.aes = FALSE)+scale_y_continuous(limits=c(450,750), expand=c(0, 0))+ scale_x_continuous(limits = c(min(a1$wsCNV, na.rm=TRUE ), max(a1$wsP3b, na.rm=TRUE)),expand=c(0, 0))+
   xlab("CNV") + ylab("RT") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="bottom")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/lCNV_accRT.pdf", width =4, height = 4)
+pdf("Figures/lCNV_accRT.pdf", width =4, height = 4)
 pAccRTCNV
 dev.off()
 
@@ -764,7 +765,7 @@ pAccRTP3b <- ggplot(data=IA, aes(x=wsP3b, y=fit ))  +theme_bw(12) + geom_line()+
   geom_ribbon(data=IA, aes(x=wsP3b, max = fit + se, min = fit- se),alpha=0.1, inherit.aes = FALSE)+ scale_y_continuous(limits=c(450,750), expand=c(0, 0))+ scale_x_continuous(limits = c(min(a1$wsCNV, na.rm=TRUE ), max(a1$wsP3b, na.rm=TRUE)),expand=c(0, 0))+
   xlab("P3b") + ylab("RT") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="bottom")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/P3b_accRT.pdf", width =4, height = 4)
+pdf("Figures/P3b_accRT.pdf", width =4, height = 4)
 pAccRTP3b
 dev.off()
 
@@ -821,7 +822,7 @@ IA <- as.data.frame(eff_df)
 pRT<- ggplot(data=IA, aes(x=cRT, y=fit, color=Acc  )) + geom_line()+scale_colour_manual(name="Accuracy", values=cbPalette) +theme_bw(12)+ geom_ribbon(data=IA, aes(x=cRT, max = fit + se, min = fit- se, fill = Acc),alpha=0.1, inherit.aes = FALSE)+
   scale_fill_manual(name="Accuracy", values=cbPalette) + xlab("RT") + ylab("ERN") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) #+ theme(legend.position=c(0.25, 0.2))
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/ERN_ACC_RT.pdf", width =4, height = 4)
+pdf("Figures/ERN_ACC_RT.pdf", width =4, height = 4)
 pRT
 dev.off()
 
@@ -831,7 +832,7 @@ IA <- as.data.frame(eff_df)
 pPI<- ggplot(data=IA, aes(x=meanCorr1, y=fit, color=Acc  )) + geom_line()+scale_colour_manual(name="Accuracy", values=cbPalette) +theme_bw(12)+ geom_ribbon(data=IA, aes(x=meanCorr1, max = fit + se, min = fit- se, fill = Acc),alpha=0.1, inherit.aes = FALSE)+
   scale_fill_manual(name="Accuracy", values=cbPalette) + xlab("P(Correct|Incentive)") + ylab("ERN") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) #+ theme(legend.position=c(0.25, 0.2))
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/ERN_ACC_Exp.pdf", width =4, height = 4)
+pdf("Figures/ERN_ACC_Exp.pdf", width =4, height = 4)
 pPI
 dev.off()
 
@@ -842,7 +843,7 @@ pRT<- ggplot(data=IA, aes(x=EffLvl, y=fit , group = interaction(RewLvl,Acc), fil
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Efficacy level") + ylab("Amplitude [µV]") + #ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/Supplement_low_Priority/ERN_Efficacy_Reward_Acc.pdf", width =4, height = 4)
+pdf("Figures/ERN_Efficacy_Reward_Acc.pdf", width =4, height = 4)
 pRT
 dev.off()
 
@@ -852,7 +853,7 @@ IA$Congruency <- ordered(IA$Congruency, levels=c( "Incongruent", "Neutral", "Con
 pRT<- ggplot(data=IA, aes(x=cRT, y=fit, color=Congruency  )) + geom_line()+scale_colour_manual(name="Congruency", values=cbPalette) +theme_bw(12)+ geom_ribbon(data=IA, aes(x=cRT, max = fit + se, min = fit- se, fill = Congruency),alpha=0.1, inherit.aes = FALSE)+
   scale_fill_manual(name="Congruency", values=cbPalette) + xlab("RT") + ylab("ERN") + theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) #+ theme(legend.position=c(0.25, 0.2))
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/Supplement_low_Priority/ERN_Congruency_RT.pdf", width =4, height = 4)
+pdf("Figures/ERN_Congruency_RT.pdf", width =4, height = 4)
 pRT
 dev.off()
 
@@ -893,7 +894,7 @@ pFRNEff <- ggplot(data=sum1, aes(x=EffLvl, y=P2PFRN , group = interaction(IsRewa
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) #+ theme(legend.position="none")
 
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/FRN_Reward_and_Efficacy_by_reward_within_SE_all_in_one.pdf", width =5, height = 4)
+pdf("Figures/FRN_Reward_and_Efficacy_by_reward_within_SE_all_in_one.pdf", width =5, height = 4)
 pFRNEff
 dev.off()
 
@@ -917,7 +918,7 @@ pDRmCNVl <- ggplot(data=sum1, aes(x=Trial, y=AccRTResNT))+geom_ribbon(aes(max = 
   theme(axis.text = element_text(size = 12), strip.text.x= element_text(size=12))+xlab("Trial") + ylab("Average Residual RT") + #ggtitle("Late CNV")+  #ylim(-0.12, 0.15)+
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + theme(legend.position="none")
 
-pdf("~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/ResidualRTTrial.pdf", width =4, height = 4)
+pdf("Figures/ResidualRTTrial.pdf", width =4, height = 4)
 pDRmCNVl
 dev.off()
 
@@ -953,8 +954,8 @@ colnames(plotTmat5) <- sedit(colnames(plotTmat5), "RewLvl2-1", "Reward")
 colnames(plotTmat5) <- sedit(colnames(plotTmat5), ":", "by")
 
 
-writeMat('~/Dropbox (Brown)/Data and Results Shared/Export/plotes5.mat',Emat5=plotEmat5)
-writeMat('~/Dropbox (Brown)/Data and Results Shared/Export/plotts5.mat',Tmat5=plotTmat5)
+writeMat('Export/plotes5.mat',Emat5=plotEmat5)
+writeMat('Export/plotts5.mat',Tmat5=plotTmat5)
 
 ## CNV
 ap <- a1
@@ -986,13 +987,13 @@ colnames(plotTmat2) <- sedit(colnames(plotTmat2), "RewLvl2-1", "Reward")
 colnames(plotTmat2) <- sedit(colnames(plotTmat2), ":", "by")
 
 
-writeMat('~/Dropbox (Brown)/Data and Results Shared/Export/plotes2.mat',Emat2=plotEmat2)
-writeMat('~/Dropbox (Brown)/Data and Results Shared/Export/plotts2.mat',Tmat2=plotTmat2)
+writeMat('Export/plotes2.mat',Emat2=plotEmat2)
+writeMat('Export/plotts2.mat',Tmat2=plotTmat2)
 
 ######################## Theta r-locked #####################################
 
 # load and merge subject files
-logdir= '~/Dropbox (Brown)/Data and Results Shared/EEG/Timefreq/subj_tf_resp_window_singletrial/'
+logdir= 'Timefreq/'
 
 fl <- list.files(logdir)
 

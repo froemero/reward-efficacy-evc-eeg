@@ -10,7 +10,7 @@ The [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) MATLAB toolbox is required.
 
 #### Epoch/segment continuous EEG data
 
-To create epochs from the continuous EEG data that are locked to cue, stimulus, response, and feedback, use `Epoching_FXCEEG.m`. The resulting `.mat` files will be saved in a directory `Export`. 
+To create epochs from the continuous EEG data that are locked to cue, stimulus, response, and feedback, use `Epoching_FXCEEG.m`. The resulting `.mat` files will be saved in a directory `Export`. This script also requires the `csv` files in the `TriggersCleaned` directory (to fix a bug with the response-locked EEG triggers/TTLs).
 
 #### Export single-trial EEG time-windows
 
@@ -25,4 +25,7 @@ To run the analyses reported in the manuscript, use `Froemer_Lin_DeanWolf_Inzlic
 
 The EEG (`.mat`) files will be in the `Export` directory.
 
+EEG response-locked theta data are in the `Timefreq` directory.
+
 To plot the P3b and CNV ERP components, use `plotting_FXC_EEG.m`, which reads files from the `Export` directory and requires custom MATLAB functions ([export_fig](https://www.mathworks.com/matlabcentral/fileexchange/23629-export_fig)).
+

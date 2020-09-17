@@ -2,9 +2,10 @@
 
 %%
 
-PATH = '~/Dropbox (Brown)/Data and Results Shared/';
+%% SPECIFY YOUR WORKING DIRECTORY! %%
+PATH = './';
 % load behavioral Data
-load(sprintf('%sBehavior/Behavioral data/FXCallSubDataTable.mat', PATH))
+load(sprintf('%sBehavior/FXCallSubDataTable.mat', PATH))
 % load EEG Data
 
 load(sprintf('%sExport/CDAT.mat', PATH))
@@ -75,7 +76,7 @@ Leg4=plot(cTIME,nanmean(CDAT(Cz,:,E0R0),3),'-','linewidth',2, 'color', [41/255, 
 xlim([XMIN XMAX])
 ylim([YMIN YMAX])
 xlabel('Time [ms]')
-ylabel('Amplitude [µV]')
+ylabel('Amplitude [ï¿½V]')
 set(gca, 'fontsize', 12);
 set(gca,'TickDir','out')
 xlabh = get(gca,'XLabel');
@@ -90,7 +91,7 @@ set(lh,  'fontsize', 12, 'position',[.30,.20,lp(3:4)])%
 set(lh,'box','off')
 set(gcf,'units','centimeters','position',[0 0 12 10])
 %%
-saveas(gcf, '~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/CNV_time_course.pdf')
+saveas(gcf, 'Figures/CNV_time_course.pdf')
 %% P3b
 YMIN=-6;
 YMAX=8;
@@ -114,7 +115,7 @@ Leg4=plot(cTIME,nanmean(CDAT(Pz,:,E0R0),3),'-','linewidth',2, 'color', [41/255, 
 xlim([XMIN XMAX])
 ylim([YMIN YMAX])
 xlabel('Time [ms]')
-ylabel('Amplitude [µV]')
+ylabel('Amplitude [ï¿½V]')
 set(gca, 'fontsize', 12);
 set(gca,'TickDir','out')
 xlabh = get(gca,'XLabel');
@@ -128,13 +129,13 @@ lp=get(lh,'position');
 set(lh,  'fontsize', 12)%, 'position',[.65,.85,lp(3:4)]
 set(lh,'box','off')
 set(gcf,'units','centimeters','position',[0 0 12 10])
-saveas(gcf, '~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/Cue_P3b_time_course.pdf')
+saveas(gcf, 'Figures/Cue_P3b_time_course.pdf')
 
 
 
 
 
-addpath(genpath('~/Dropbox (Brown)/ShenhavLab/Resources/EEG_resources/EEGfunctions/'));
+addpath(genpath('EEGfunctions/'));
 
 
 
@@ -162,7 +163,7 @@ ylim([-0.6 0.6])
 colorbar('EastOutside');
  set(gcf,'units','centimeters','position',[0 0 20 8])
  
- export_fig('~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/CNV_reward_topo','-pdf','-painters');
+ export_fig('Figures/CNV_reward_topo','-pdf','-painters');
 %%
 PLOTRAD = .70;
 HEADRAD = .70;
@@ -178,7 +179,7 @@ colorbar('EastOutside');
  set(gcf,'units','centimeters','position',[0 0 20 8])
  
  
- export_fig('~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/CNV_efficacy_topo','-pdf','-painters');
+ export_fig('Figures/CNV_efficacy_topo','-pdf','-painters');
 
  %% Cue P3b
 load(sprintf('%sExport/plotes5.mat', PATH), 'Emat5') % estimates
@@ -201,7 +202,7 @@ ylim([-0.6 0.6])
 colorbar('EastOutside');
  set(gcf,'units','centimeters','position',[0 0 20 8])
  
- export_fig('~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/P3b_reward_topo','-pdf','-painters');
+ export_fig('Figures/P3b_reward_topo','-pdf','-painters');
 
 %%
 PLOTRAD = .70;
@@ -217,5 +218,5 @@ ylim([-0.6 0.6])
 colorbar('EastOutside');
  set(gcf,'units','centimeters','position',[0 0 20 8])
  
- export_fig('~/Dropbox (Brown)/Data and Results Shared/Figures/MS_for_edit/P3b_efficacy_topo','-pdf','-painters');
+ export_fig('Figures/P3b_efficacy_topo','-pdf','-painters');
  

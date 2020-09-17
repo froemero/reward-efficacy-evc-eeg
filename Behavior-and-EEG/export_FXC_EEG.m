@@ -1,7 +1,7 @@
 % Export time window average or time series to access in R for analyses  
 
-
-PATH = '~/Dropbox (Brown)/Data and Results Shared/'; %edit to your needs
+%% SPECIFY YOUR WORKING DIRECTORY! %%
+PATH = './'; %edit to your needs
 EXPORTPATH ='Export/'; % Export folder (segmented data will be saved there)
 srate=512; % sampling rate
 bl=200; %length of prestimulus interval in ms
