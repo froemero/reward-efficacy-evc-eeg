@@ -1,14 +1,16 @@
 # README
 
-Download the EEG and behavioral [here](https://osf.io/dnwm2/).
+**Romy Frömer wrote the code here and analyzed the EEG and behavioral data. Any questions, get in touch with Romy.**
 
-## Preprocessing
+Download the EEG data [here](https://osf.io/dnwm2/). 
 
-The [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) MATLAB toolbox is required. Other custom MATLAB functions might be required too—get in touch if you want the continuous data or/and plan to segment (i.e., create epochs) the continuous data yourself with `Epoching_FXCEEG.m`.
+The [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) MATLAB toolbox is required. Custom MATLAB functions are in the `EEGFunctions` directory. If you require other functions, get in touch. 
 
-#### Epoching continuous EEG data
+## Preprocess continuous EEG data
 
-To create epochs from the continuous EEG data that are locked to cue, stimulus, response, and feedback, use `Epoching_FXCEEG.m`. The resulting `.mat` files will be saved in a directory `Export`.
+#### Epoch/segment continuous EEG data
+
+To create epochs from the continuous EEG data that are locked to cue, stimulus, response, and feedback, use `Epoching_FXCEEG.m`. The resulting `.mat` files will be saved in a directory `Export`. 
 
 #### Export single-trial EEG time-windows
 

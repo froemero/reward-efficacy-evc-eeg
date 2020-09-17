@@ -1,5 +1,7 @@
 # README
 
+**Hause Lin wrote the code here and analyzed the pupil data. Any questions, get in touch with Hause.**
+
 ## Preprocessing
 
 The blink-interpolated pupil data (csv files) are in the `DataBlinksInterpolated_csv` directory (download all data [here](https://osf.io/3buew/)). 
