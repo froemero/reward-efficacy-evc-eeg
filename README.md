@@ -10,8 +10,8 @@ Hause Lin wrote the code and analyzed the pupil data in the `Pupil` directory. Q
 
 **Directories**
 
-- Behavior-and-EEG: Code for behavior and EEG analyses
-- Pupil: Code for pupil analyses
+- `Behavior-and-EEG`: Code for behavior and EEG analyses
+- `Pupil`: Code for pupil analyses
 
 This repository contains code for the following paper: 
 
