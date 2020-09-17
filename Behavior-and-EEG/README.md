@@ -21,4 +21,4 @@ To run the analyses reported in the manuscript, use `Froemer_Lin_DeanWolf_Inzlic
 
 The EEG (`.mat`) files will be in the `Export` directory.
 
-To plot the P3b and CNV ERP components, use `plotting_FXC_EEG.m`, which reads files from the `Export` directory and requires custom MATLAB functions.
+To plot the P3b and CNV ERP components, use `plotting_FXC_EEG.m`, which reads files from the `Export` directory and requires custom MATLAB functions ([export_fig](https://www.mathworks.com/matlabcentral/fileexchange/23629-export_fig)).
