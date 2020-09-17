@@ -17,3 +17,4 @@ If you have questions related to anything in this repository, raise an issue [he
 ## Directories
 
 - Pupil: Code for pupil analyses
+- Behavior-and-EEG: Code for behavior and EEG analyses
